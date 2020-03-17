@@ -30,7 +30,7 @@ jobs:
       - name: Test with pytest
         run: |
           pip install pytest coveralls
-          coverage run -m pytest tests --doctest-modules --cov=app --cov-report=xml --cov-report=html
+          coverage run -m pytest tests
           coveralls
       - name: Upload pytest test results
         uses: actions/upload-artifact@master
