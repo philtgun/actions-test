@@ -29,16 +29,13 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          pip install pytest pytest-cov coveralls
-          pytest tests --doctest-modules --cov=app --cov-report=xml --cov-report=html
-#      - name: Upload pytest test results
-#        uses: actions/upload-artifact@master
-#        with:
-#          name: pytest-results-${{ matrix.python-version }}
-#          path: junit/test-results-${{ matrix.python-version }}.xml
-#        # Use always() to always run this step to publish test results when there are test failures
-#        if: always()
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
+          pip install pytest coveralls
+          coverage run -m pytest tests --doctest-modules --cov=app --cov-report=xml --cov-report=html
+          coveralls
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@master
         with:
-          github-token: ${{ secrets.COVERALLS_GITHUB_TOKEN }}
+          name: pytest-results-${{ matrix.python-version }}
+          path: junit/test-results-${{ matrix.python-version }}.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: always()
