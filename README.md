@@ -1,5 +1,7 @@
 # Actions Test
 
-Testing github actions
+![Build](https://img.shields.io/github/workflow/status/philtgun/actions-test/Actions%20Test)
+![License](https://img.shields.io/github/license/philtgun/actions-test?color=blue)
+![Coverage](https://img.shields.io/coveralls/github/philtgun/actions-test)
 
-![Actions Test](https://github.com/philtgun/actions-test/workflows/Actions%20Test/badge.svg?branch=master)
+Testing github actions
